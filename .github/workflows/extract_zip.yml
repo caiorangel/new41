@@ -1,0 +1,25 @@
+name: Extract ZIP
+
+on:
+  push:
+    paths:
+      - Arquivo.zip
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v2
+
+    - name: Unzip the file
+      run: unzip Arquivo.zip -d extracted_files
+
+    - name: Commit extracted files
+      run: |
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "actions@github.com"
+        git add extracted_files/*
+        git commit -m "Extração automática de Arquivo.zip"
+        git push
+
