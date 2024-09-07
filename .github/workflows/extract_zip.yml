@@ -3,7 +3,7 @@ name: Extract ZIP
 on:
   push:
     paths:
-      - Arquivo.zip
+      - Arquivo_v2.zip
 
 jobs:
   unzip:
